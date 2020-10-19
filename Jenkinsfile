@@ -12,6 +12,11 @@ pipeline {
                 sh 'python3 test.py'
             }
         }
+        post {
+        always {
+          junit 'test-reports/*.xml'
+        }
+      }    
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
